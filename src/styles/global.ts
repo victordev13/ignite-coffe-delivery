@@ -9,18 +9,24 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: 0;
-    box-shadow: 0 0 0 2px #333;
+    box-shadow: 0 0 0 2px ${(props) => props.theme.colors['yellow-dark']};
   }
 
   body {
-    background: #f9f9f9;
+    background: ${(props) => props.theme.colors.background};
     color: #333;
     -webkit-font-smoothing: antialiased;
   }
 
   body, input, textarea, button {
-    font-family: 'Roboto', sans-serif;
+    font-family: ${(props) => props.theme.fonts.text};
     font-weight: 400;
     font-size: 1rem;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: ${(props) => props.theme.fonts.header};
+    font-weight: 800;
+    color: ${(props) => props.theme.colors['base-title']};
   }
 `
