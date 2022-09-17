@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font-family: ${(props) => props.theme.fonts.text};
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 
   h1, h2, h3, h4 {

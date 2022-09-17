@@ -13,7 +13,7 @@ export const defaultTheme = {
     white: '#FFFFFF',
 
     yellow: '#DBAC2C',
-    'yellow-light': '#DBAC2C',
+    'yellow-light': '#F1E9C9',
     'yellow-dark': '#C47F17',
 
     purple: '#8047F8',
