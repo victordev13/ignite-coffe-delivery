@@ -18,6 +18,8 @@ export const Button = styled.button<ButtonProps>`
       ? theme.colors['yellow-dark']
       : theme.colors['purple-dark']};
 
+  cursor: pointer;
+
   &:hover {
     background: ${({ variation, theme }) =>
       variation === 'purple' && theme.colors['base-hover']};
@@ -26,7 +28,8 @@ export const Button = styled.button<ButtonProps>`
   }
 
   svg {
-    vertical-align: sub;
+    margin: 0 4px;
+    vertical-align: middle;
     color: ${({ variation, theme }) =>
       variation === 'yellow'
         ? theme.colors['yellow-dark']

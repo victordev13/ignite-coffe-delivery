@@ -29,4 +29,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 800;
     color: ${(props) => props.theme.colors['base-title']};
   }
+
+  p {
+    color: ${(props) => props.theme.colors['base-text']}
+  }
 `
