@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 import HomeBackground from '../../assets/home-background.png'
 
+import { defaultTheme } from '../../styles/themes/default'
+
 export const Container = styled.div`
   max-width: 1120px;
   margin: 0 auto;
 
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+  gap: 2.3rem;
   height: calc(100vh - 104px);
 
   h1 {
@@ -22,9 +24,7 @@ export const Container = styled.div`
     color: ${(props) => props.theme.colors['base-subtitle']};
   }
 
-  > div {
-    width: 50%;
-  }
+  padding: 0 10px;
 
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;
@@ -52,15 +52,33 @@ export const Background = styled.div`
 `
 
 export const ItemsContainer = styled.div`
+  margin-top: 3.75rem;
+
   ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
+    row-gap: 20px;
   }
 
   ul li {
     width: 50%;
     font-size: 1rem;
+    font-weight: 400;
+    align-items: center;
+    display: inline-flex;
   }
+`
+const { colors } = defaultTheme
+
+export const IconContainer = styled.div<{ bg: keyof typeof colors }>`
+  width: 32px;
+  height: 32px;
+  background-color: ${({ theme, bg }) => theme.colors[bg]};
+
+  border-radius: 50%;
+  padding: 8px;
+
+  margin-right: 12px;
 `
