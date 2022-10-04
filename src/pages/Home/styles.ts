@@ -6,11 +6,8 @@ import { defaultTheme } from '../../styles/themes/default'
 export const Container = styled.div`
   max-width: 1120px;
   margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  gap: 2.3rem;
-  height: calc(100vh - 104px);
+  padding: 0 10px;
+  position: relative;
 
   h1 {
     font-size: 3rem;
@@ -18,17 +15,32 @@ export const Container = styled.div`
     color: ${(props) => props.theme.colors['base-title']};
   }
 
+  h2 {
+    font-size: 2rem;
+    line-height: 62.4px;
+    color: ${(props) => props.theme.colors['base-subtitle']};
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0.69rem;
+  }
+`
+
+export const FullContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  gap: 2.3rem;
+  min-height: calc(100vh - 104px);
+  height: 100%;
+
   p {
     margin-top: 1rem;
     font-size: 1.25rem;
     color: ${(props) => props.theme.colors['base-subtitle']};
   }
 
-  padding: 0 10px;
-
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;
-    padding: 0.69rem;
 
     > div {
       width: 100%;

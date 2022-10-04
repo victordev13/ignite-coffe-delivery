@@ -1,12 +1,31 @@
-import { Background, Container, IconContainer, ItemsContainer } from './styles'
+import {
+  Background,
+  Container,
+  FullContainer,
+  IconContainer,
+  ItemsContainer,
+} from './styles'
 import CoffeIntroImage from '../../assets/coffee-intro-image.png'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { fetchCoffees } from '../../services/coffee'
+import { CoffeeGrid } from '../../components/CoffeeGrid'
+
+export interface ICoffee {
+  id: number
+  name: string
+  description: string
+  tags: string[]
+  image: string
+  price: number
+}
 
 export default function Home() {
+  const coffees = fetchCoffees()
+
   return (
     <>
       <Background />
-      <Container>
+      <FullContainer style={{ paddingTop: '104px' }}>
         <div>
           <div>
             <h1>Encontre o café perfeito para qualquer hora do dia</h1>
@@ -46,6 +65,14 @@ export default function Home() {
         </div>
         <div>
           <img src={CoffeIntroImage} />
+        </div>
+      </FullContainer>
+      <Container>
+        <header>
+          <h2>Nossos cafés</h2>
+        </header>
+        <div>
+          <CoffeeGrid coffees={coffees} />
         </div>
       </Container>
     </>

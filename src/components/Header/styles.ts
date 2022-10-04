@@ -6,10 +6,15 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
 
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.background};
+  z-index: 999;
+
   height: 104px;
-  max-width: 1120px;
+  padding-inline: max(calc(calc(100vw - 1120px) / 2), 0.69rem);
   margin: 0 auto;
-  padding: 0.69rem;
 `
 export const ActionsContainer = styled.div`
   display: flex;
