@@ -1,4 +1,6 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { CartContext } from '../../contexts/CartContext'
 import { ICoffee } from '../../pages/Home'
 import { formatMoney } from '../../utils/money'
 import { CartButton } from '../CartButton'
@@ -17,8 +19,27 @@ interface Props {
 
 export function Coffee({ coffee }: Props) {
   const [count, setCount] = useState(1)
+  const [itemAddedToCart, setItemAddedToCart] = useState(false)
 
-  function handleAddToCart(event: FormEvent<HTMLButtonElement>) {} // todo
+  const { handleAddItemToCart } = useContext(CartContext)
+
+  function handleAddToCart(event: FormEvent<HTMLButtonElement>) {
+    event.preventDefault()
+
+    handleAddItemToCart({
+      id: new Date().toTimeString(),
+      value: coffee.price,
+      count,
+      amount: coffee.price * count,
+    })
+    setItemAddedToCart(true)
+  }
+
+  const navigate = useNavigate()
+
+  function handleGoToCart() {
+    navigate('/cart')
+  }
 
   return (
     <CardContainer>
@@ -44,9 +65,10 @@ export function Coffee({ coffee }: Props) {
               onIncrement={(value) => setCount(value)}
               onDecrement={(value) => setCount(value)}
             />
-            <CartButton onChange={handleAddToCart} />
+            <CartButton onClick={handleAddToCart} />
           </div>
         </FooterContainer>
+        {itemAddedToCart && <Link to="/cart">Ver Item no Carrinho</Link>}
       </CardContent>
     </CardContainer>
   )

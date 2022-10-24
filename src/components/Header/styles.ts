@@ -20,3 +20,13 @@ export const ActionsContainer = styled.div`
   display: flex;
   gap: 0.75rem;
 `
+
+export const Badge = styled.div`
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-left: 20px;
+  font-weight: bold;
+`

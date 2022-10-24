@@ -9,10 +9,8 @@ export const Container = styled.div`
   padding: 0 10px;
   position: relative;
 
-  h1 {
-    font-size: 3rem;
-    line-height: 62.4px;
-    color: ${(props) => props.theme.colors['base-title']};
+  > div {
+    padding: 2rem 0;
   }
 
   h2 {
@@ -32,6 +30,14 @@ export const FullContainer = styled(Container)`
   gap: 2.3rem;
   min-height: calc(100vh - 104px);
   height: 100%;
+
+  span {
+    font-family: ${(props) => props.theme.fonts.header};
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 62.4px;
+    color: ${(props) => props.theme.colors['base-title']};
+  }
 
   p {
     margin-top: 1rem;

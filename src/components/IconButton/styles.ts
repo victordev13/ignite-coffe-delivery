@@ -6,6 +6,7 @@ interface ButtonProps {
 
 export const Button = styled.button<ButtonProps>`
   border: none;
+  position: relative;
   padding: 10px;
   border-radius: 0.5rem;
   background: ${({ variation, theme }) =>
