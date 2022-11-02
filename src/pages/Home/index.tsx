@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <Background />
-      <FullContainer style={{ paddingTop: '104px' }}>
+      <FullContainer>
         <div>
           <div>
             <span>Encontre o café perfeito para qualquer hora do dia</span>

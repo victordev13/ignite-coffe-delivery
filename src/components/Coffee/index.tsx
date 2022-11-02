@@ -1,5 +1,5 @@
 import { FormEvent, useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { CartContext } from '../../contexts/CartContext'
 import { ICoffee } from '../../pages/Home'
 import { formatMoney } from '../../utils/money'
@@ -28,17 +28,10 @@ export function Coffee({ coffee }: Props) {
 
     handleAddItemToCart({
       id: new Date().toTimeString(),
-      value: coffee.price,
       count,
-      amount: coffee.price * count,
+      coffee,
     })
     setItemAddedToCart(true)
-  }
-
-  const navigate = useNavigate()
-
-  function handleGoToCart() {
-    navigate('/cart')
   }
 
   return (

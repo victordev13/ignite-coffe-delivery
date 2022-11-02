@@ -24,4 +24,6 @@ export const defaultTheme = {
     header: '"Baloo 2", cursive',
     text: 'Roboto, sans-serif',
   },
-}
+} as const
+
+export type Colors = keyof typeof defaultTheme.colors

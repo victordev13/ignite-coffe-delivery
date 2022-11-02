@@ -30,6 +30,11 @@ export const CardContent = styled.div`
     font-size: 10.5pt;
     color: ${({ theme }) => theme.colors['base-label']};
   }
+
+  a {
+    display: block;
+    margin-top: 15px;
+  }
 `
 
 export const Tag = styled.div`

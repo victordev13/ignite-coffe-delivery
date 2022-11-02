@@ -17,6 +17,7 @@ const Container = styled.div`
   font-size: 12pt;
   height: 2.3rem;
   border-radius: 6px;
+  max-width: fit-content;
 
   background: ${({ theme }) => theme.colors['base-button']};
 

@@ -1,5 +1,9 @@
 import { createContext, ReactNode, useReducer } from 'react'
-import { addItemToCart } from '../reducer/cart/actions'
+import {
+  addItemToCart,
+  removeItemFromCart,
+  updateItem,
+} from '../reducer/cart/actions'
 import { CartItem, cartReducer } from '../reducer/cart/reducer'
 
 interface CartContextInterface {
@@ -8,10 +12,19 @@ interface CartContextInterface {
     totalCount: number
     totalValue: number
   }
-  handleAddItemToCart: (item: CartItem) => void
+  handleAddItemToCart: (item: Omit<CartItem, 'totalValue'>) => void
+  handleRemoveItemFromCart: (item: CartItem) => void
+  handleIncrementItemCount: (item: CartItem) => void
+  handleDecrementItemCount: (item: CartItem) => void
 }
 
-export const CartContext = createContext({} as CartContextInterface)
+export const CartContext = createContext({
+  cart: {
+    items: [],
+    totalCount: 0,
+    totalValue: 0,
+  },
+} as unknown as CartContextInterface)
 
 interface Props {
   children: ReactNode
@@ -24,8 +37,30 @@ export function CartContextProvider({ children }: Props) {
     totalValue: 0,
   })
 
-  function handleAddItemToCart(item: CartItem) {
-    dispatch(addItemToCart(item))
+  function handleAddItemToCart(item: Omit<CartItem, 'totalValue'>) {
+    dispatch(addItemToCart({ ...item, totalValue: 0 }))
+  }
+
+  function handleRemoveItemFromCart(item: CartItem) {
+    dispatch(removeItemFromCart(item))
+  }
+
+  function handleIncrementItemCount(item: CartItem) {
+    dispatch(
+      updateItem({
+        ...item,
+        count: item.count + 1,
+      }),
+    )
+  }
+
+  function handleDecrementItemCount(item: CartItem) {
+    dispatch(
+      updateItem({
+        ...item,
+        count: item.count - 1,
+      }),
+    )
   }
 
   return (
@@ -33,6 +68,9 @@ export function CartContextProvider({ children }: Props) {
       value={{
         cart,
         handleAddItemToCart,
+        handleIncrementItemCount,
+        handleDecrementItemCount,
+        handleRemoveItemFromCart,
       }}
     >
       {children}
