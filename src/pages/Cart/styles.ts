@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.form`
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 10px;
@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   gap: 32px;
 
-  div:last-child {
+  > div:last-child {
     max-width: 448px;
   }
 
@@ -83,14 +83,22 @@ export const PaymentContainer = styled(BaseCard)`
   input {
     display: none;
   }
+
+  > div {
+    display: inline-flex;
+    gap: 12px;
+  }
 `
 export const CartItemsContainer = styled(BaseCard)`
+  font-size: 1rem;
+
   button[type='submit'] {
     width: 100%;
     background: ${({ theme }) => theme.colors.yellow};
     color: white;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
 
     display: flex;
     flex-direction: row;
@@ -109,17 +117,21 @@ export const CartItemsContainer = styled(BaseCard)`
   line-height: 2rem;
   position: relative;
 
-  span {
+  span.absolute {
     position: absolute;
     right: 40px;
+  }
+
+  .bold {
     font-weight: 700;
-    font-size: 1rem;
   }
 
   > div {
     display: flex;
     align-items: center;
     gap: 20px;
+    border-bottom: 1px solid ${(props) => props.theme.colors['base-button']};
+    padding-bottom: 24px;
   }
 
   img {
@@ -131,4 +143,46 @@ export const CartItemsContainer = styled(BaseCard)`
 export const CartItemOptions = styled.div`
   display: flex;
   gap: 0.5rem;
+`
+
+export const ResumeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  line-height: 13.5px;
+  gap: 0;
+
+  > div {
+    width: 100%;
+
+    display: inline-flex;
+    justify-content: space-between;
+  }
+`
+
+export const PaymentOption = styled.button<{ selected?: boolean }>`
+  border: 1px solid
+    ${({ theme, selected }) =>
+      selected ? theme.colors['purple-dark'] : 'transparent'};
+  position: relative;
+  padding: 10px;
+  border-radius: 0.5rem;
+  background: ${({ theme }) => theme.colors['base-button']};
+
+  color: ${({ theme }) => theme.colors['purple-dark']};
+
+  :focus {
+    box-shadow: none;
+  }
+
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors['base-hover']};
+  }
+
+  svg {
+    margin: 0 4px;
+    vertical-align: middle;
+    color: ${({ theme }) => theme.colors['purple-dark']};
+  }
 `

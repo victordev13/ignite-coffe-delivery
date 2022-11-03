@@ -1,3 +1,3 @@
 export function OrderSuccess() {
-  return <div>index</div>
+  return <div>Obrigado pela compra!</div>
 }
